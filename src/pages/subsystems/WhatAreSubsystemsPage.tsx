@@ -73,7 +73,7 @@ const LayerDescription = styled.p`
 const Arrow = styled.div`
   width: 2px;
   height: 2rem;
-  background: #495057;
+  background: #dee2e6;
   position: relative;
 
   &::after {
@@ -84,7 +84,7 @@ const Arrow = styled.div`
     transform: translateX(-50%);
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 8px solid #495057;
+    border-top: 8px solid #dee2e6;
   }
 `;
 
