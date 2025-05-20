@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import ButtonPage from './pages/components/ButtonPage';
 import BadgePage from './pages/components/BadgePage';
@@ -56,6 +56,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/index.html" element={<Navigate to="/" replace />} />
           <Route path="/components/button" element={<ButtonPage />} />
           <Route path="/components/buttons" element={<ButtonPage />} />
           <Route path="/components/badge" element={<BadgePage />} />
@@ -68,7 +69,7 @@ function App() {
           <Route path="/red-velvet" element={<RedVelvetPage />} />
           <Route path="/gaming" element={<GamingPage />} />
           <Route path="/what-are-subsystems" element={<WhatAreSubsystemsPage />} />
-          {/* Add more routes as we create more component pages */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
     </Router>
