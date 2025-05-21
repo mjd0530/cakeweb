@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import heroBanner from '../assets/hero/hero-banner-dark.png';
 
 const Container = styled.div`
-  width: 100%;
-  min-width: 100%;
+  width: 100vw;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
 `;
 
 const Hero = styled.div`
@@ -43,11 +45,13 @@ const HeroContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 0 0 4rem;
+  padding: 0;
+  margin: 0;
   z-index: 2;
 
   @media (max-width: 900px) {
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 0;
+    margin: 0;
     align-items: flex-start;
   }
 `;
