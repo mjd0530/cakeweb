@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import heroBanner from '../assets/hero/hero-banner.png';
 
 const Container = styled.div`
   width: 100%;
@@ -24,6 +25,16 @@ const Hero = styled.div`
     height: auto;
     min-height: 320px;
   }
+`;
+
+const HeroImage = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 `;
 
 const HeroContent = styled.div`
@@ -184,20 +195,10 @@ const HomePage: FC = () => {
   return (
     <Container>
       <Hero>
+        <HeroImage src={heroBanner} alt="Cake Design System Hero" />
         <HeroContent>
           <HeroTitle>Cake<br />Design System</HeroTitle>
         </HeroContent>
-        <HeroShapes>
-          <svg width="100%" height="100%" viewBox="0 0 700 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', right: 0, top: 0, height: '100%', width: '100%' }}>
-            <circle cx="600" cy="200" r="120" fill="#0A58CA" />
-            <ellipse cx="500" cy="100" rx="80" ry="120" fill="#22D3EE" />
-            <ellipse cx="650" cy="350" rx="60" ry="80" fill="#F59E42" />
-            <ellipse cx="400" cy="300" rx="100" ry="60" fill="#F43F5E" />
-            <ellipse cx="550" cy="250" rx="60" ry="60" fill="#FDE047" />
-            <ellipse cx="700" cy="100" rx="80" ry="80" fill="#2563EB" />
-            <ellipse cx="480" cy="350" rx="40" ry="40" fill="#181A20" fillOpacity="0.5" />
-          </svg>
-        </HeroShapes>
       </Hero>
 
       <Section>
