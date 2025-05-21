@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import { useState } from 'react';
 import { Button } from '../../components/Button/Button';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const Container = styled.div`
   max-width: 700px;
@@ -48,14 +50,12 @@ const ExamplePreview = styled.div`
   }
 `;
 
-const CodeBlock = styled.pre`
-  background: #f8f9fa;
+const CodeBlock = styled.div`
+  background: #2d2d2d;
   overflow-x: auto;
   max-width: 100%;
   margin: 0;
   border-radius: 0 0 8px 8px;
-  padding: 1.5rem;
-  font-size: 0.875rem;
   position: relative;
 `;
 
@@ -103,13 +103,6 @@ const Notification = styled.div`
   opacity: 0.95;
 `;
 
-const DocText = styled.p`
-  font-size: 1.125rem;
-  color: #495057;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-`;
-
 const ButtonPage: FC = () => {
   const [notification, setNotification] = useState('');
 
@@ -146,7 +139,7 @@ const ButtonPage: FC = () => {
         </ExamplePreview>
         <CodeBlock>
           <CopyButton onClick={() => handleCopy(`<Button>Primary</Button>\n<Button variant=\"secondary\">Secondary</Button>\n<Button variant=\"danger\">Danger</Button>`)}>Copy</CopyButton>
-          {`<Button>Primary</Button>\n<Button variant="secondary">Secondary</Button>\n<Button variant="danger">Danger</Button>`}
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`<Button>Primary</Button>\n<Button variant="secondary">Secondary</Button>\n<Button variant="danger">Danger</Button>`}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
       <Card>
@@ -166,12 +159,19 @@ const ButtonPage: FC = () => {
         </ExamplePreview>
         <CodeBlock>
           <CopyButton onClick={() => handleCopy(`<Button><OpenInNewIcon style={{ marginRight: 8 }} />Primary</Button>\n<Button variant=\"secondary\"><OpenInNewIcon style={{ marginRight: 8 }} />Secondary</Button>\n<Button variant=\"danger\"><OpenInNewIcon style={{ marginRight: 8 }} />Danger</Button>`)}>Copy</CopyButton>
-          {`<Button><OpenInNewIcon style={{ marginRight: 8 }} />Primary</Button>\n<Button variant="secondary"><OpenInNewIcon style={{ marginRight: 8 }} />Secondary</Button>\n<Button variant="danger"><OpenInNewIcon style={{ marginRight: 8 }} />Danger</Button>`}
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`<Button><OpenInNewIcon style={{ marginRight: 8 }} />Primary</Button>\n<Button variant="secondary"><OpenInNewIcon style={{ marginRight: 8 }} />Secondary</Button>\n<Button variant="danger"><OpenInNewIcon style={{ marginRight: 8 }} />Danger</Button>`}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
       {notification && <Notification>{notification}</Notification>}
     </Container>
   );
 };
+
+const DocText = styled.p`
+  font-size: 1.125rem;
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+`;
 
 export default ButtonPage; 
