@@ -208,7 +208,7 @@ const ContentWrapper = styled.div`
   box-sizing: border-box;
   background: #fff;
   max-width: 1200px;
-  margin-left: calc((100vw - 280px - 1200px) / 2 + 280px);
+  margin-left: auto;
   margin-right: auto;
 
   @media (max-width: 1200px) {
