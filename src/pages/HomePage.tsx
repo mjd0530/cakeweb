@@ -207,6 +207,8 @@ const ContentWrapper = styled.div`
   padding: 2rem 4rem;
   box-sizing: border-box;
   background: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @media (max-width: 1200px) {
     padding: 2rem;
