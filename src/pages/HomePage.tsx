@@ -53,7 +53,7 @@ const HeroContent = styled.div`
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 4rem;
+  font-size: 8em;
   font-weight: 800;
   color: #fff;
   margin: 0 0 1.5rem 0;
@@ -62,7 +62,7 @@ const HeroTitle = styled.h1`
   text-align: left;
 
   @media (max-width: 900px) {
-    font-size: 2.5rem;
+    font-size: 2.5em;
     margin-bottom: 1rem;
   }
 `;
