@@ -112,8 +112,29 @@ const ButtonPage: FC = () => {
     setTimeout(() => setNotification(''), 3000);
   };
 
-  const basicCode = `<Button>Primary</Button>\n<Button variant=\"secondary\">Secondary</Button>\n<Button variant=\"danger\">Danger</Button>`;
-  const iconCode = `<Button><OpenInNewIcon style={{ marginRight: 8 }} />Primary</Button>\n<Button variant=\"secondary\"><OpenInNewIcon style={{ marginRight: 8 }} />Secondary</Button>\n<Button variant=\"danger\"><OpenInNewIcon style={{ marginRight: 8 }} />Danger</Button>`;
+  const basicCode = `import { Button } from '@/components/Button';
+
+<Button>Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="danger">Danger</Button>`;
+  const iconCode = `import { Button } from '@/components/Button';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+
+<Button>
+  <OpenInNewIcon style={{ marginRight: 8 }} />
+  Primary
+</Button>
+<Button variant="secondary">
+  <OpenInNewIcon style={{ marginRight: 8 }} />
+  Secondary
+</Button>
+<Button variant="danger">
+  <OpenInNewIcon style={{ marginRight: 8 }} />
+  Danger
+</Button>`;
+  const disabledCode = `import { Button } from '@/components/Button';
+
+<Button disabled>Button</Button>`;
 
   return (
     <Container>
@@ -138,8 +159,8 @@ const ButtonPage: FC = () => {
           </ButtonGrid>
         </ExamplePreview>
         <CodeBlock>
-          <CopyButton onClick={() => handleCopy(`<Button>Primary</Button>\n<Button variant=\"secondary\">Secondary</Button>\n<Button variant=\"danger\">Danger</Button>`)}>Copy</CopyButton>
-          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`<Button>Primary</Button>\n<Button variant="secondary">Secondary</Button>\n<Button variant="danger">Danger</Button>`}</SyntaxHighlighter>
+          <CopyButton onClick={() => handleCopy(basicCode)}>Copy</CopyButton>
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{basicCode}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
       <Card>
@@ -158,8 +179,8 @@ const ButtonPage: FC = () => {
           </ButtonGrid>
         </ExamplePreview>
         <CodeBlock>
-          <CopyButton onClick={() => handleCopy(`<Button><OpenInNewIcon style={{ marginRight: 8 }} />Primary</Button>\n<Button variant=\"secondary\"><OpenInNewIcon style={{ marginRight: 8 }} />Secondary</Button>\n<Button variant=\"danger\"><OpenInNewIcon style={{ marginRight: 8 }} />Danger</Button>`)}>Copy</CopyButton>
-          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`<Button><OpenInNewIcon style={{ marginRight: 8 }} />Primary</Button>\n<Button variant="secondary"><OpenInNewIcon style={{ marginRight: 8 }} />Secondary</Button>\n<Button variant="danger"><OpenInNewIcon style={{ marginRight: 8 }} />Danger</Button>`}</SyntaxHighlighter>
+          <CopyButton onClick={() => handleCopy(iconCode)}>Copy</CopyButton>
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{iconCode}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
       <Card>
@@ -172,8 +193,8 @@ const ButtonPage: FC = () => {
           </ButtonGrid>
         </ExamplePreview>
         <CodeBlock>
-          <CopyButton onClick={() => handleCopy(`<Button disabled>Button</Button>`)}>Copy</CopyButton>
-          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`<Button disabled>Button</Button>`}</SyntaxHighlighter>
+          <CopyButton onClick={() => handleCopy(disabledCode)}>Copy</CopyButton>
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{disabledCode}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
       {notification && <Notification>{notification}</Notification>}
