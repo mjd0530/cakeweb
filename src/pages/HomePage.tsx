@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-import heroBanner from '../assets/hero/hero-banner.png';
+import heroBanner from '../assets/hero/hero-banner-dark.png';
 
 const Container = styled.div`
   width: 100%;
