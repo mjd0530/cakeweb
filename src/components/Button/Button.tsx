@@ -116,7 +116,6 @@ const SpinnerSvg = styled('svg')<{ isLoading?: boolean }>`
 `;
 
 const ContentWrapper = styled.span<{ isLoading?: boolean }>`
-  opacity: ${({ isLoading }) => (isLoading ? 0.5 : 1)};
   display: inline-flex;
   align-items: center;
   justify-content: center;
