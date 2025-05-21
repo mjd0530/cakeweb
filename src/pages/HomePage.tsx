@@ -64,10 +64,12 @@ const HeroTitle = styled.h1`
   line-height: 1.1;
   letter-spacing: -2px;
   text-align: left;
+  padding-left: 2rem;
 
   @media (max-width: 900px) {
     font-size: 2.5em;
     margin-bottom: 1rem;
+    padding-left: 1rem;
   }
 `;
 
@@ -195,6 +197,25 @@ const SectionTitle = styled.h2`
   }
 `;
 
+const Divider = styled.hr`
+  border: none;
+  border-top: 1px solid #e9ecef;
+  margin: 0;
+`;
+
+const ContentWrapper = styled.div`
+  padding: 2rem 4rem;
+  box-sizing: border-box;
+  background: #fff;
+
+  @media (max-width: 1200px) {
+    padding: 2rem;
+  }
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+`;
+
 const HomePage: FC = () => {
   return (
     <Container>
@@ -204,84 +225,86 @@ const HomePage: FC = () => {
           <HeroTitle>Cake<br />Design System</HeroTitle>
         </HeroContent>
       </Hero>
+      <Divider />
+      <ContentWrapper>
+        <Section>
+          <SectionContent>
+            <SectionTitle>Getting Started</SectionTitle>
+            <Grid>
+              <Card to="/installation">
+                <CardTitle>Installation</CardTitle>
+                <CardDescription>
+                  Learn how to install and set up the design system in your project
+                </CardDescription>
+              </Card>
+              <Card to="/versioning">
+                <CardTitle>Version History</CardTitle>
+                <CardDescription>
+                  Stay up to date with the latest changes and improvements
+                </CardDescription>
+              </Card>
+              <Card to="/guidelines">
+                <CardTitle>Design Guidelines</CardTitle>
+                <CardDescription>
+                  Understand our design principles and best practices
+                </CardDescription>
+              </Card>
+            </Grid>
+          </SectionContent>
+        </Section>
 
-      <Section>
-        <SectionContent>
-          <SectionTitle>Getting Started</SectionTitle>
-          <Grid>
-            <Card to="/installation">
-              <CardTitle>Installation</CardTitle>
-              <CardDescription>
-                Learn how to install and set up the design system in your project
-              </CardDescription>
-            </Card>
-            <Card to="/versioning">
-              <CardTitle>Version History</CardTitle>
-              <CardDescription>
-                Stay up to date with the latest changes and improvements
-              </CardDescription>
-            </Card>
-            <Card to="/guidelines">
-              <CardTitle>Design Guidelines</CardTitle>
-              <CardDescription>
-                Understand our design principles and best practices
-              </CardDescription>
-            </Card>
-          </Grid>
-        </SectionContent>
-      </Section>
+        <Section theme="light">
+          <SectionContent>
+            <SectionTitle>Components</SectionTitle>
+            <Grid>
+              <Card to="/components/buttons">
+                <CardTitle>Buttons</CardTitle>
+                <CardDescription>
+                  Interactive elements for triggering actions
+                </CardDescription>
+              </Card>
+              <Card to="/components/badges">
+                <CardTitle>Badges</CardTitle>
+                <CardDescription>
+                  Status indicators and notifications
+                </CardDescription>
+              </Card>
+              <Card to="/components/inputs">
+                <CardTitle>Input Fields</CardTitle>
+                <CardDescription>
+                  Form controls for collecting user input
+                </CardDescription>
+              </Card>
+              <Card to="/components/typography">
+                <CardTitle>Typography</CardTitle>
+                <CardDescription>
+                  Text styles and hierarchies
+                </CardDescription>
+              </Card>
+            </Grid>
+          </SectionContent>
+        </Section>
 
-      <Section theme="light">
-        <SectionContent>
-          <SectionTitle>Components</SectionTitle>
-          <Grid>
-            <Card to="/components/buttons">
-              <CardTitle>Buttons</CardTitle>
-              <CardDescription>
-                Interactive elements for triggering actions
-              </CardDescription>
-            </Card>
-            <Card to="/components/badges">
-              <CardTitle>Badges</CardTitle>
-              <CardDescription>
-                Status indicators and notifications
-              </CardDescription>
-            </Card>
-            <Card to="/components/inputs">
-              <CardTitle>Input Fields</CardTitle>
-              <CardDescription>
-                Form controls for collecting user input
-              </CardDescription>
-            </Card>
-            <Card to="/components/typography">
-              <CardTitle>Typography</CardTitle>
-              <CardDescription>
-                Text styles and hierarchies
-              </CardDescription>
-            </Card>
-          </Grid>
-        </SectionContent>
-      </Section>
-
-      <Section>
-        <SectionContent>
-          <SectionTitle>Design Patterns</SectionTitle>
-          <Grid>
-            <Card to="/patterns/forms">
-              <CardTitle>Forms</CardTitle>
-              <CardDescription>
-                Best practices for form layout and validation
-              </CardDescription>
-            </Card>
-            <Card to="/patterns/navigation">
-              <CardTitle>Navigation</CardTitle>
-              <CardDescription>
-                Patterns for helping users move through your application
-              </CardDescription>
-            </Card>
-          </Grid>
-        </SectionContent>
-      </Section>
+        <Section>
+          <SectionContent>
+            <SectionTitle>Design Patterns</SectionTitle>
+            <Grid>
+              <Card to="/patterns/forms">
+                <CardTitle>Forms</CardTitle>
+                <CardDescription>
+                  Best practices for form layout and validation
+                </CardDescription>
+              </Card>
+              <Card to="/patterns/navigation">
+                <CardTitle>Navigation</CardTitle>
+                <CardDescription>
+                  Patterns for helping users move through your application
+                </CardDescription>
+              </Card>
+            </Grid>
+          </SectionContent>
+        </Section>
+      </ContentWrapper>
     </Container>
   );
 };
