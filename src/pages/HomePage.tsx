@@ -107,12 +107,12 @@ const Subtitle = styled.p`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 2rem;
   width: 100%;
 
   @media (max-width: 1200px) {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   }
 
   @media (max-width: 768px) {
@@ -204,6 +204,8 @@ const Divider = styled.hr`
 `;
 
 const ContentWrapper = styled.div`
+  width: 100%;
+  min-width: 0;
   padding: 2rem 4rem;
   box-sizing: border-box;
   background: #fff;
