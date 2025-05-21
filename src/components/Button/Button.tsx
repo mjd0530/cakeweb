@@ -87,10 +87,8 @@ const LoadingSpinner = styled('span')`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
+  margin-left: 12px;
   width: 20px;
   height: 20px;
 `;

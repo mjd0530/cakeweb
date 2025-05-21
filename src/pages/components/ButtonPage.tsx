@@ -188,13 +188,13 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
           <SubHeader>Disabled</SubHeader>
           <ButtonGrid>
             <div>
-              <Button disabled>Button</Button>
+              <Button disabled>Disabled</Button>
             </div>
           </ButtonGrid>
         </ExamplePreview>
         <CodeBlock>
-          <CopyButton onClick={() => handleCopy(disabledCode)}>Copy</CopyButton>
-          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{disabledCode}</SyntaxHighlighter>
+          <CopyButton onClick={() => handleCopy(`import { Button } from '@/components/Button';\n\n<Button disabled>Disabled</Button>`)}>Copy</CopyButton>
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`import { Button } from '@/components/Button';\n\n<Button disabled>Disabled</Button>`}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
       <Card>
@@ -202,13 +202,13 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
           <SubHeader>Loading</SubHeader>
           <ButtonGrid>
             <div>
-              <Button isLoading>Button</Button>
+              <Button isLoading>Loading</Button>
             </div>
           </ButtonGrid>
         </ExamplePreview>
         <CodeBlock>
-          <CopyButton onClick={() => handleCopy(`import { Button } from '@/components/Button';\n\n<Button isLoading>Button</Button>`)}>Copy</CopyButton>
-          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`import { Button } from '@/components/Button';\n\n<Button isLoading>Button</Button>`}</SyntaxHighlighter>
+          <CopyButton onClick={() => handleCopy(`import { Button } from '@/components/Button';\n\n<Button isLoading>Loading</Button>`)}>Copy</CopyButton>
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`import { Button } from '@/components/Button';\n\n<Button isLoading>Loading</Button>`}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
       {notification && <Notification>{notification}</Notification>}
