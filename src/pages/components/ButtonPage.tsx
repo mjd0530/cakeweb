@@ -86,12 +86,6 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
             <div>
               <Button variant="danger"><IconLeft /><span>Danger</span></Button>
             </div>
-            <div>
-              <Button disabled><IconLeft disabled /><span>Disabled</span></Button>
-            </div>
-            <div>
-              <Button isLoading><IconLeft /><span>Loading</span></Button>
-            </div>
           </ButtonGrid>
         </Section>
       </ComponentPage>
