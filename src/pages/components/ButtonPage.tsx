@@ -162,6 +162,20 @@ const ButtonPage: FC = () => {
           <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`<Button><OpenInNewIcon style={{ marginRight: 8 }} />Primary</Button>\n<Button variant="secondary"><OpenInNewIcon style={{ marginRight: 8 }} />Secondary</Button>\n<Button variant="danger"><OpenInNewIcon style={{ marginRight: 8 }} />Danger</Button>`}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
+      <Card>
+        <ExamplePreview>
+          <SubHeader>Disabled</SubHeader>
+          <ButtonGrid>
+            <div>
+              <Button disabled>Button</Button>
+            </div>
+          </ButtonGrid>
+        </ExamplePreview>
+        <CodeBlock>
+          <CopyButton onClick={() => handleCopy(`<Button disabled>Button</Button>`)}>Copy</CopyButton>
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`<Button disabled>Button</Button>`}</SyntaxHighlighter>
+        </CodeBlock>
+      </Card>
       {notification && <Notification>{notification}</Notification>}
     </Container>
   );
