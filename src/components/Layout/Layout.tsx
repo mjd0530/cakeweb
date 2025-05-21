@@ -2,7 +2,6 @@ import type { FC, ReactNode } from 'react';
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import Sidebar from './Sidebar';
-import { useLocation } from 'react-router-dom';
 
 const LayoutContainer = styled.div`
   display: flex;
@@ -10,24 +9,24 @@ const LayoutContainer = styled.div`
   background-color: #ffffff;
 `;
 
-const MainContent = styled.main<{ noPadding?: boolean }>`
+const MainContent = styled.main`
   flex: 1;
   margin-left: 280px;
   min-height: 100vh;
   width: calc(100vw - 280px);
   overflow-x: hidden;
-  padding: ${({ noPadding }) => (noPadding ? '0' : '2rem 4rem')};
+  padding: 2rem 4rem;
   box-sizing: border-box;
   background-color: #fafafa;
 
   @media (max-width: 1200px) {
-    padding: ${({ noPadding }) => (noPadding ? '0' : '2rem')};
+    padding: 2rem;
   }
 
   @media (max-width: 768px) {
     margin-left: 0;
     width: 100vw;
-    padding: ${({ noPadding }) => (noPadding ? '0' : '1rem')};
+    padding: 1rem;
   }
 `;
 
@@ -74,8 +73,6 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const location = useLocation();
-  const isHome = location.pathname === '/';
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -92,7 +89,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       </MenuButton>
       <Overlay isVisible={isSidebarOpen} onClick={closeSidebar} />
       <Sidebar isOpen={isSidebarOpen} />
-      <MainContent noPadding={isHome}>
+      <MainContent>
         {children}
       </MainContent>
     </LayoutContainer>
