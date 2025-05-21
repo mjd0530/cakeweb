@@ -39,7 +39,15 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   ${({ variant, disabled, isLoading }) => {
-    if (disabled || isLoading) {
+    if (disabled) {
+      return `
+        background: #E2E8F0;
+        color: #64748B;
+        cursor: not-allowed;
+        opacity: 1;
+      `;
+    }
+    if (isLoading) {
       return `
         background: #E2E8F0;
         color: #64748B;
@@ -117,7 +125,7 @@ const ContentWrapper = styled.span<{ isLoading?: boolean }>`
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, isLoading, disabled, ...props }, ref) => {
-    const spinnerColor = '#64748B';
+    const spinnerColor = isLoading ? '#1D4ED8' : '#64748B';
     const spinnerTrack = '#E2E8F0';
     return (
       <StyledButton ref={ref} disabled={disabled || isLoading} isLoading={isLoading} {...props}>
