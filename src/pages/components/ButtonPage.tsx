@@ -197,6 +197,20 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
           <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{disabledCode}</SyntaxHighlighter>
         </CodeBlock>
       </Card>
+      <Card>
+        <ExamplePreview>
+          <SubHeader>Loading</SubHeader>
+          <ButtonGrid>
+            <div>
+              <Button isLoading>Button</Button>
+            </div>
+          </ButtonGrid>
+        </ExamplePreview>
+        <CodeBlock>
+          <CopyButton onClick={() => handleCopy(`import { Button } from '@/components/Button';\n\n<Button isLoading>Button</Button>`)}>Copy</CopyButton>
+          <SyntaxHighlighter language="tsx" style={tomorrow} customStyle={{ background: '#2d2d2d', margin: 0, borderRadius: 0, padding: '1.5rem', fontSize: '0.875rem' }}>{`import { Button } from '@/components/Button';\n\n<Button isLoading>Button</Button>`}</SyntaxHighlighter>
+        </CodeBlock>
+      </Card>
       {notification && <Notification>{notification}</Notification>}
     </Container>
   );
