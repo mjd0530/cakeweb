@@ -38,7 +38,15 @@ const StyledButton = styled.button<ButtonProps>`
     opacity: 1;
   }
 
-  ${({ variant }) => {
+  ${({ variant, disabled, isLoading }) => {
+    if (disabled || isLoading) {
+      return `
+        background: #E2E8F0;
+        color: #64748B;
+        cursor: not-allowed;
+        opacity: 1;
+      `;
+    }
     switch (variant) {
       case 'secondary':
         return `
@@ -93,7 +101,7 @@ const LoadingSpinner = styled('span')`
   height: 20px;
 `;
 
-const SpinnerSvg = styled('svg')`
+const SpinnerSvg = styled('svg')<{ isLoading?: boolean }>`
   width: 20px;
   height: 20px;
   display: block;
@@ -109,8 +117,10 @@ const ContentWrapper = styled.span<{ isLoading?: boolean }>`
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, isLoading, disabled, ...props }, ref) => {
+    const spinnerColor = '#64748B';
+    const spinnerTrack = '#E2E8F0';
     return (
-      <StyledButton ref={ref} disabled={disabled || isLoading} {...props}>
+      <StyledButton ref={ref} disabled={disabled || isLoading} isLoading={isLoading} {...props}>
         <ContentWrapper isLoading={isLoading}>{children}</ContentWrapper>
         {isLoading && (
           <LoadingSpinner>
@@ -120,13 +130,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 cy="12"
                 r="10"
                 fill="none"
-                stroke="#E2E8F0"
+                stroke={spinnerTrack}
                 strokeWidth="4"
               />
               <path
                 d="M12 2 a 10 10 0 0 1 0 20"
                 fill="none"
-                stroke="#2563EB"
+                stroke={spinnerColor}
                 strokeWidth="4"
                 strokeLinecap="round"
               >
