@@ -14,6 +14,13 @@ const Section = styled.section`
   margin-bottom: 2rem;
 `;
 
+const SubHeader = styled.h3`
+  font-size: 1.125rem;
+  color: #64748B;
+  font-weight: 600;
+  margin-bottom: 1rem;
+`;
+
 const ButtonGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -27,35 +34,29 @@ const IconLeft = styled(OpenInNewIcon)<{ disabled?: boolean }>`
 `;
 
 const ButtonPage: FC = () => {
-  const exampleCode = `
-import { Button } from '@/components/Button';
+  const code = `import { Button } from '@/components/Button';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
-// Button Variants
+// Basic
 <Button>Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="danger">Danger</Button>
-`;
 
-  const iconButtonCode = `
-import { Button } from '@/components/Button';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-
-// With icon on the left
+// With Icon
 <Button><OpenInNewIcon style={{ marginRight: 8 }} />Primary</Button>
 <Button variant="secondary"><OpenInNewIcon style={{ marginRight: 8 }} />Secondary</Button>
 <Button variant="danger"><OpenInNewIcon style={{ marginRight: 8 }} />Danger</Button>
-<Button disabled><OpenInNewIcon style={{ marginRight: 8, color: '#64748B' }} />Disabled</Button>
-<Button isLoading><OpenInNewIcon style={{ marginRight: 8 }} />Loading</Button>
 `;
 
   return (
     <Container>
       <ComponentPage
-        title="Button"
+        title="Examples"
         description="Buttons allow users to trigger an action or event with a single click. They communicate calls to action to your users and allow them to interact with your interface."
-        code={exampleCode}
+        code={code}
       >
         <Section>
+          <SubHeader>Basic</SubHeader>
           <ButtonGrid>
             <div>
               <Button>
@@ -75,7 +76,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
           </ButtonGrid>
         </Section>
         <Section>
-          <h2>Button with Icon</h2>
+          <SubHeader>With Icon</SubHeader>
           <ButtonGrid>
             <div>
               <Button><IconLeft /><span>Primary</span></Button>
