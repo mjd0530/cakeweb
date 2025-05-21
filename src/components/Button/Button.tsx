@@ -14,15 +14,17 @@ const StyledButton = styled.button<ButtonProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 24px;
+  padding: 0 24px;
   border-radius: 100px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   cursor: pointer;
   transition: background-color 0.2s ease;
   min-width: 80px;
   border: none;
+  height: 40px;
+  text-align: center;
 
   &:focus:not(:disabled) {
     outline: none;
@@ -30,10 +32,10 @@ const StyledButton = styled.button<ButtonProps>`
   }
 
   &:disabled {
-    opacity: 0.5;
+    background: #E2E8F0;
+    color: #64748B;
     cursor: not-allowed;
-    background: #E0E0E0;
-    color: #9E9E9E;
+    opacity: 1;
   }
 
   ${({ variant }) => {
@@ -41,7 +43,7 @@ const StyledButton = styled.button<ButtonProps>`
       case 'secondary':
         return `
           background: #E2E8F0;
-          color: #495057;
+          color: #1E293B;
 
           &:hover:not(:disabled) {
             background: #CBD5E1;
@@ -53,50 +55,95 @@ const StyledButton = styled.button<ButtonProps>`
         `;
       case 'danger':
         return `
-          background: #DC3545;
+          background: #B91C1C;
           color: white;
 
           &:hover:not(:disabled) {
-            background: #C82333;
+            background: #991B1B;
           }
 
           &:active:not(:disabled) {
-            background: #BD2130;
+            background: #7F1D1D;
           }
         `;
       default: // primary
         return `
-          background: #0D6EFD;
+          background: #2563EB;
           color: white;
 
           &:hover:not(:disabled) {
-            background: #0B5ED7;
+            background: #1D4ED8;
           }
 
           &:active:not(:disabled) {
-            background: #0A58CA;
+            background: #1E40AF;
           }
         `;
     }
   }}
 `;
 
-const LoadingSpinner = styled(CircularProgress)`
+const LoadingSpinner = styled('span')`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+`;
+
+const SpinnerSvg = styled('svg')`
+  width: 20px;
+  height: 20px;
+  display: block;
 `;
 
 const ContentWrapper = styled.span<{ isLoading?: boolean }>`
-  opacity: ${({ isLoading }) => (isLoading ? 0 : 1)};
+  opacity: ${({ isLoading }) => (isLoading ? 0.5 : 1)};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, isLoading, disabled, ...props }, ref) => {
     return (
       <StyledButton ref={ref} disabled={disabled || isLoading} {...props}>
-        {isLoading && <LoadingSpinner size={16} color="inherit" />}
         <ContentWrapper isLoading={isLoading}>{children}</ContentWrapper>
+        {isLoading && (
+          <LoadingSpinner>
+            <SpinnerSvg viewBox="0 0 24 24">
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                fill="none"
+                stroke="#E2E8F0"
+                strokeWidth="4"
+              />
+              <path
+                d="M12 2 a 10 10 0 0 1 0 20"
+                fill="none"
+                stroke="#2563EB"
+                strokeWidth="4"
+                strokeLinecap="round"
+              >
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 12 12"
+                  to="360 12 12"
+                  dur="0.8s"
+                  repeatCount="indefinite"
+                />
+              </path>
+            </SpinnerSvg>
+          </LoadingSpinner>
+        )}
       </StyledButton>
     );
   }
