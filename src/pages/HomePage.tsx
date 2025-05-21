@@ -8,36 +8,68 @@ const Container = styled.div`
 `;
 
 const Hero = styled.div`
-  width: 100%;
-  padding: 4rem 0;
-  background: white;
-  border-bottom: 1px solid #e9ecef;
-  
-  @media (max-width: 768px) {
-    padding: 2rem 0;
+  width: 100vw;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: #181A20;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  height: 400px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    height: auto;
+    min-height: 320px;
   }
 `;
 
 const HeroContent = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  text-align: center;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 0 0 4rem;
+  z-index: 2;
 
-  @media (max-width: 768px) {
-    padding: 0 1rem;
+  @media (max-width: 900px) {
+    padding: 2rem 1rem 1rem 1rem;
+    align-items: flex-start;
   }
 `;
 
-const Title = styled.h1`
-  font-size: 3.5rem;
-  color: #212529;
-  margin-bottom: 1.5rem;
+const HeroTitle = styled.h1`
+  font-size: 4rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  text-align: left;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+  }
+`;
+
+const HeroShapes = styled.div`
+  flex: 2 1 0;
+  position: relative;
+  height: 100%;
+  min-width: 400px;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+  z-index: 1;
+  pointer-events: none;
+
+  @media (max-width: 900px) {
+    min-width: 0;
+    height: 200px;
   }
 `;
 
@@ -153,11 +185,19 @@ const HomePage: FC = () => {
     <Container>
       <Hero>
         <HeroContent>
-          <Title>Design System</Title>
-          <Subtitle>
-            A comprehensive guide to our design language, components, and patterns
-          </Subtitle>
+          <HeroTitle>Cake<br />Design System</HeroTitle>
         </HeroContent>
+        <HeroShapes>
+          <svg width="100%" height="100%" viewBox="0 0 700 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ position: 'absolute', right: 0, top: 0, height: '100%', width: '100%' }}>
+            <circle cx="600" cy="200" r="120" fill="#0A58CA" />
+            <ellipse cx="500" cy="100" rx="80" ry="120" fill="#22D3EE" />
+            <ellipse cx="650" cy="350" rx="60" ry="80" fill="#F59E42" />
+            <ellipse cx="400" cy="300" rx="100" ry="60" fill="#F43F5E" />
+            <ellipse cx="550" cy="250" rx="60" ry="60" fill="#FDE047" />
+            <ellipse cx="700" cy="100" rx="80" ry="80" fill="#2563EB" />
+            <ellipse cx="480" cy="350" rx="40" ry="40" fill="#181A20" fillOpacity="0.5" />
+          </svg>
+        </HeroShapes>
       </Hero>
 
       <Section>
