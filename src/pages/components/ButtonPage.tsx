@@ -103,6 +103,13 @@ const Notification = styled.div`
   opacity: 0.95;
 `;
 
+const DocText = styled.p`
+  font-size: 1.125rem;
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+`;
+
 const ButtonPage: FC = () => {
   const [notification, setNotification] = useState('');
 
@@ -118,6 +125,9 @@ const ButtonPage: FC = () => {
   return (
     <Container>
       <PageHeader>Button</PageHeader>
+      <DocText>
+        The Button Component is a fundamental element of the user interface used for triggering actions, navigating between pages, or submitting forms. It provides a clear call-to-action and enhances user interaction within the application or website.
+      </DocText>
       <SectionHeader>Examples</SectionHeader>
       <Card>
         <ExamplePreview>
