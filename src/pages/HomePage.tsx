@@ -64,12 +64,12 @@ const HeroTitle = styled.h1`
   line-height: 1.1;
   letter-spacing: -2px;
   text-align: left;
-  padding-left: 2rem;
+  padding-left: 6rem;
 
   @media (max-width: 900px) {
     font-size: 2.5em;
     margin-bottom: 1rem;
-    padding-left: 1rem;
+    padding-left: 2rem;
   }
 `;
 
