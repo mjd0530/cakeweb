@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronRight } from '@mui/icons-material';
 import cakeLogo from '../../assets/cake.svg';
+import { searchIndex, type SearchResult } from '../../data/searchIndex';
+import SearchResults from '../Search/SearchResults';
 
 const SidebarContainer = styled.aside`
   width: 280px;
@@ -285,14 +287,23 @@ const SearchInputModal = styled.div`
   }
 `;
 
-const SearchResults = styled.div`
+const SearchResultsContainer = styled.div`
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+  /* Remove box-shadow and border for clean alignment */
+`;
+
+const SearchResultsScroll = styled.div`
   max-height: 400px;
   overflow-y: auto;
-  padding: 0.5rem;
-
-  &:empty {
-    padding: 0;
-  }
+  width: 100%;
+  padding: 0.5rem 0;
+  /* Inherit border radius for smooth corners */
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background: #fff;
 `;
 
 interface SidebarProps {
@@ -302,6 +313,7 @@ interface SidebarProps {
 const Sidebar: FC<SidebarProps> = ({ isOpen }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const searchInputRef = useRef<HTMLInputElement>(null);
   
   // Add state for section expansion
@@ -338,7 +350,27 @@ const Sidebar: FC<SidebarProps> = ({ isOpen }) => {
   const closeSearch = useCallback(() => {
     setIsSearchOpen(false);
     setSearchQuery('');
+    setSearchResults([]);
   }, []);
+
+  // Handle search input changes
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query.trim() === '') {
+      setSearchResults([]);
+      return;
+    }
+
+    // Simple search implementation - can be enhanced with fuzzy search
+    const results = searchIndex.filter(item => {
+      const searchableText = `${item.title} ${item.description} ${item.category}`.toLowerCase();
+      return searchableText.includes(query.toLowerCase());
+    });
+
+    setSearchResults(results);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -397,15 +429,17 @@ const Sidebar: FC<SidebarProps> = ({ isOpen }) => {
               type="text"
               placeholder="Search documentation..."
               value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
+              onChange={handleSearchChange}
             />
             <div className="shortcut">
               <span className="key">ESC</span>
             </div>
           </SearchInputModal>
-          <SearchResults>
-            {/* Search results will be rendered here */}
-          </SearchResults>
+          <SearchResultsContainer>
+            <SearchResultsScroll>
+              <SearchResults results={searchResults} onResultClick={closeSearch} />
+            </SearchResultsScroll>
+          </SearchResultsContainer>
         </SearchContent>
       </SearchModal>
 
